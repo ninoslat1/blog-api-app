@@ -11,16 +11,8 @@ const path = require("path")
 const cors = require('cors')
 
 dotenv.config()
-app.use(express.json())
+app.use(express.json(), cors())
 app.use("/images", express.static(path.join(__dirname, "/images")))
-
-const corsConfig = {
-  origin: '',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}
-app.use(cors(corsConfig))
-app.options("", cors(corsConfig))
 
 const port = process.env.PORT || 5000
 
